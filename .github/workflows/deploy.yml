@@ -27,7 +27,7 @@ jobs:
     - name: Build Docker image
       run: |
         docker build -t ecs-demo-repo:latest .
-        docker tag ecs-demo-repo:latest public.ecr.aws/r6y3q1h3/ecs-demo-repo:latest/ecs-demo-repo:latest
+        docker tag ecs-demo-repo:latest public.ecr.aws/r6y3q1h3/ecs-demo-repo:latest
 
     - name: Push Docker image to ECR
       run: |
