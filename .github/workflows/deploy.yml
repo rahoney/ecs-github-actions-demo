@@ -22,16 +22,16 @@ jobs:
     - name: Login to Amazon ECR Public
       run: |
         aws ecr-public get-login-password --region us-east-1 | \     
-        docker login --username AWS --password-stdin public.ecr.aws/public.ecr.aws/r6y3q1h3/ecs-demo-repo:latest
+        docker login --username AWS --password-stdin public.ecr.aws
 
     - name: Build Docker image
       run: |
         docker build -t ecs-demo-repo:latest .
-        docker tag ecs-demo-repo:latest public.ecr.aws/public.ecr.aws/r6y3q1h3/ecs-demo-repo:latest/ecs-demo-repo:latest
+        docker tag ecs-demo-repo:latest public.ecr.aws/r6y3q1h3/ecs-demo-repo:latest/ecs-demo-repo:latest
 
     - name: Push Docker image to ECR
       run: |
-        docker push public.ecr.aws/public.ecr.aws/r6y3q1h3/ecs-demo-repo:latest/ecs-demo-repo:latest
+        docker push public.ecr.aws/r6y3q1h3/ecs-demo-repo:latest
 
     - name: Deploy to ECS (Fargate)
       run: |
