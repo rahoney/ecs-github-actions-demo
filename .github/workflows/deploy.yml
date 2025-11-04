@@ -21,7 +21,7 @@ jobs:
 
     - name: Login to Amazon ECR Public
       run: |
-        aws ecr-public get-login-password --region us-east-1 | \ 
+        aws ecr-public get-login-password --region us-east-1 | \
         docker login --username AWS --password-stdin public.ecr.aws
 
     - name: Build Docker image
@@ -36,8 +36,8 @@ jobs:
     - name: Deploy to ECS (Fargate)
       run: |
         aws ecs update-service \
-          --cluster ecs-demo-cluster \     # 본인 ECS 클러스터 이름으로 변경
-          --service ecs-demo-service \     # 본인 ECS 서비스 이름으로 변경
+          --cluster ecs-demo-cluster \
+          --service ecs-demo-service \
           --force-new-deployment \
           --region ap-northeast-2
 
